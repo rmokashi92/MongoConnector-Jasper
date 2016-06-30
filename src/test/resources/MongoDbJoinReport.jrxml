@@ -1,0 +1,1454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report5" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8d73ed9e-5b4a-4bbf-9f65-437d44a93d75">
+	<property name="template.type" value="columnar"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="MongoDbQuery">
+		<![CDATA[{
+
+collectionName : 'json1'
+
+}]]>
+	</queryString>
+	<field name="@context.CDM" class="java.lang.String"/>
+	<field name="CDM.additionalProperties" class="java.lang.Boolean"/>
+	<field name="CDM.properties.AVService.items.properties.bsid.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.minItems" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.maximum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.minimum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.Tags.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.appId.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.endTime.format" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.endTime.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.startTime.format" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.startTime.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.required" class="java.util.List"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.minItems" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.endTime.format" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.endTime.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.startTime.format" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.startTime.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.maximum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.minimum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.required" class="java.util.List"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.minItems" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentID.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentLang.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentName.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.maximum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.minimum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.maximum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.minimum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.endTime.format" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.endTime.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.startTime.format" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.startTime.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.required" class="java.util.List"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.minItems" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.ContentID.properties.oneOf" class="java.util.List"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.ContentID.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.maximum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.minimum" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.endTime.format" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.endTime.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.startTime.format" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.properties.startTime.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.items.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.required" class="java.util.List"/>
+	<field name="CDM.properties.AVService.items.properties.reportInterval.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.serviceId.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.properties.serviceType.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.items.required" class="java.util.List"/>
+	<field name="CDM.properties.AVService.items.type" class="java.lang.String"/>
+	<field name="CDM.properties.AVService.minItems" class="java.lang.Integer"/>
+	<field name="CDM.properties.AVService.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.deviceID.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.deviceLocation.properties.latitude.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.deviceLocation.properties.longitude.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.deviceLocation.required" class="java.util.List"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.deviceLocation.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.deviceManufacturer.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.deviceModel.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.deviceOS.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.peripheralDevice.enum" class="java.util.List"/>
+	<field name="CDM.properties.DeviceInfo.items.properties.peripheralDevice.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.items.required" class="java.util.List"/>
+	<field name="CDM.properties.DeviceInfo.items.type" class="java.lang.String"/>
+	<field name="CDM.properties.DeviceInfo.maxItems" class="java.lang.Integer"/>
+	<field name="CDM.properties.DeviceInfo.minItems" class="java.lang.Integer"/>
+	<field name="CDM.properties.DeviceInfo.type" class="java.lang.String"/>
+	<field name="CDM.properties.protocolVersion.maxLength" class="java.lang.Integer"/>
+	<field name="CDM.properties.protocolVersion.minLength" class="java.lang.Integer"/>
+	<field name="CDM.properties.protocolVersion.pattern" class="java.lang.String"/>
+	<field name="CDM.properties.protocolVersion.type" class="java.lang.String"/>
+	<field name="CDM.required" class="java.util.List"/>
+	<field name="CDM.type" class="java.lang.String"/>
+	<field name="_id" class="org.bson.types.ObjectId"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="id" class="java.lang.String"/>
+	<field name="required" class="java.util.List"/>
+	<field name="schema" class="java.lang.String"/>
+	<field name="title" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<image>
+				<reportElement uuid="b9af5cc1-c32c-445c-962d-ce1911de4c98" x="2" y="0" width="118" height="132"/>
+				<imageExpression><![CDATA["tree1.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="49141ffc-d4cc-413e-b65e-48026a2c28ec" style="Title" x="120" y="10" width="435" height="93"/>
+				<textElement>
+					<font size="80" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tree Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e1d4e6a3-3441-40a1-9018-cfb8837f5b1d" style="SubTitle" x="336" y="103" width="217" height="29"/>
+				<textElement>
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tree SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="1800" splitType="Stretch">
+			<image>
+				<reportElement uuid="5538bc59-c91f-41cd-ba9a-da0ca06f80b4" x="2" y="0" width="56" height="80"/>
+				<imageExpression><![CDATA["tree2.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement uuid="d9387766-9ffd-4b8e-a67d-fd5068b41199" positionType="FixRelativeToBottom" x="2" y="90" width="551" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="5c7631ba-2b73-42c8-b956-9b50c78b74a0" style="Column header" positionType="Float" x="79" y="0" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[@context.CDM]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="6a1cebee-3c79-473d-a504-94d4f78279c8" style="Detail" positionType="Float" x="215" y="0" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{@context.CDM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f6fe1771-a65d-4c9d-b56a-46d5db0085b8" style="Column header" positionType="Float" x="79" y="20" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.additionalProperties]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="da6d0c18-d7e4-40c3-877f-3e1b621056f1" style="Detail" positionType="Float" x="215" y="20" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.additionalProperties}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e197580c-8f5e-43ae-9f28-83ef121c787b" style="Column header" positionType="Float" x="79" y="40" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.bsid.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="4427e9f6-214e-4c95-9ab8-cb24f32b6cb7" style="Detail" positionType="Float" x="215" y="40" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.bsid.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f0d2b974-f535-43c1-a75f-46f6bdfb274d" style="Column header" positionType="Float" x="79" y="60" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.minItems]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="38981ca8-6ed0-4957-b0ff-44ba26e75ec2" style="Detail" positionType="Float" x="215" y="60" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.minItems}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6bea35c3-7e7a-4e14-b317-2f47735d2645" style="Column header" positionType="Float" x="79" y="80" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.maximum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3ec9aa50-241e-42b0-90f2-018d24827330" style="Detail" positionType="Float" x="215" y="80" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.maximum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2260d4e4-70fe-45a6-a49f-7ac679a3f38e" style="Column header" positionType="Float" x="79" y="100" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.minimum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f8aeee21-1291-444d-85d2-1af459eb083a" style="Detail" positionType="Float" x="215" y="100" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.minimum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9b3938d8-1eba-4b00-9a99-f858dc8c126e" style="Column header" positionType="Float" x="79" y="120" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="59d26f08-cd1a-4d3e-9ef9-28d7c2129922" style="Detail" positionType="Float" x="215" y="120" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.LifeCycle.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c728bd1e-0851-44f8-ad29-be6fd3624fd6" style="Column header" positionType="Float" x="79" y="140" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.Tags.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ec9edf70-0d47-43f5-a356-2b77288a5ffb" style="Detail" positionType="Float" x="215" y="140" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.Tags.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5c18c5c3-925e-4110-a159-da847980f35d" style="Column header" positionType="Float" x="79" y="160" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.appId.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f60f29c3-a834-4f34-96ea-6f837ec88d31" style="Detail" positionType="Float" x="215" y="160" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.appId.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6740aad5-18e9-4158-8b28-773349c9f8a3" style="Column header" positionType="Float" x="79" y="180" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.endTime.format]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e81b9314-2b2d-4103-b150-80630c7299b9" style="Detail" positionType="Float" x="215" y="180" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.endTime.format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="850057db-00c7-41c1-889f-0a60b1cb57c5" style="Column header" positionType="Float" x="79" y="200" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.endTime.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b0d65223-2b42-4d30-8962-8ebbd41bb0a7" style="Detail" positionType="Float" x="215" y="200" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.endTime.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="72ec09d8-7faa-4b44-8d2a-397ab44423a7" style="Column header" positionType="Float" x="79" y="220" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.startTime.format]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="a3223445-a04d-4b5e-afee-89241ff66f6e" style="Detail" positionType="Float" x="215" y="220" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.startTime.format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e753ede7-7290-465e-885a-8e2c7dd575ed" style="Column header" positionType="Float" x="79" y="240" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.startTime.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="21c04533-fb12-4584-9275-ba7dbbe61a3c" style="Detail" positionType="Float" x="215" y="240" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.properties.startTime.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="33bfde03-e44f-41a4-9944-ef38db61dba4" style="Column header" positionType="Float" x="79" y="260" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="72427a92-34f6-4479-a519-f6a3e551f0be" style="Detail" positionType="Float" x="215" y="260" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1be9acfe-a7f4-4d19-8fa4-7ccb70672ce6" style="Column header" positionType="Float" x="79" y="280" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="50cdbccb-71c9-4d3d-994f-39fad2af20f0" style="Detail" positionType="Float" x="215" y="280" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.items.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="44a69dc1-bfff-4cd5-9017-9cb8bae144c6" style="Column header" positionType="Float" x="79" y="300" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.minItems]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="5872ebb4-73f5-4c6b-9739-d7eae40107b0" style="Detail" positionType="Float" x="215" y="300" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.minItems}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="58957237-ddeb-452d-a07a-393a981235ee" style="Column header" positionType="Float" x="79" y="320" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="2e2224fe-0184-47a1-badd-33b9324f5ed0" style="Detail" positionType="Float" x="215" y="320" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.AppInterval.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="62d64fc6-f7cc-4fa3-97eb-ff0702aee5fb" style="Column header" positionType="Float" x="79" y="340" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.endTime.format]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="aa0ef428-3a19-4a38-8bec-899f77707b1d" style="Detail" positionType="Float" x="215" y="340" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.endTime.format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="257721e9-f53f-488a-8edf-49918d1b9bdf" style="Column header" positionType="Float" x="79" y="360" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.endTime.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b775fa6e-e832-42cb-9d79-d713f9dcd40f" style="Detail" positionType="Float" x="215" y="360" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.endTime.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="71a4c8e3-c84b-4d8d-b71f-b190c405920e" style="Column header" positionType="Float" x="79" y="380" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.startTime.format]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="bda5dfe3-36d2-4c56-8447-54f4c2fe9752" style="Detail" positionType="Float" x="215" y="380" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.startTime.format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3aa03a8a-8df4-4948-a0e7-51b66e6f0021" style="Column header" positionType="Float" x="79" y="400" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.startTime.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b658fcb8-bbb7-48ac-910b-0b515f6837e5" style="Detail" positionType="Float" x="215" y="400" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.startTime.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7c09a183-45dd-418f-b259-3f69c3fa1e95" style="Column header" positionType="Float" x="79" y="420" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.maximum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="fabae05a-f4a7-4615-b2d7-fccdce1f32f1" style="Detail" positionType="Float" x="215" y="420" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.maximum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="620efdd0-358a-4a90-ae72-cf9ba604efdb" style="Column header" positionType="Float" x="79" y="440" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.minimum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c50b5c3c-1da3-459f-ae76-ab983c4b67b6" style="Detail" positionType="Float" x="215" y="440" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.minimum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e236297a-5577-468a-9582-c787358e4d83" style="Column header" positionType="Float" x="79" y="460" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="089772f7-f4ca-4fad-bf1d-602651b9a659" style="Detail" positionType="Float" x="215" y="460" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.properties.type.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="24c333e6-753d-4db6-adb3-306d1d68432b" style="Column header" positionType="Float" x="79" y="480" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ad2c5159-c761-4677-b935-24240fe394b7" style="Detail" positionType="Float" x="215" y="480" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a6b64e9d-2cff-4d49-9a3f-914072ab1c50" style="Column header" positionType="Float" x="79" y="500" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="97f1d27f-2128-4078-809c-3deb64ab50e3" style="Detail" positionType="Float" x="215" y="500" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.items.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5ec965b4-7d75-4a99-bd15-43b1af67791d" style="Column header" positionType="Float" x="79" y="520" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.minItems]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="1dbe6430-506e-4cda-a65e-b7ce6034a031" style="Detail" positionType="Float" x="215" y="520" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.minItems}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f7cf9877-68b2-41fa-84d1-f25f2f97bced" style="Column header" positionType="Float" x="79" y="540" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="faa799b7-b658-44e1-8d1c-6788f2c6fa71" style="Detail" positionType="Float" x="215" y="540" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.SourceDeliveryPath.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="19638aa1-d5cf-4f05-8f74-31ddb338fd4c" style="Column header" positionType="Float" x="79" y="560" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentID.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ee1f415b-70d9-469c-a308-81b606eb52db" style="Detail" positionType="Float" x="215" y="560" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentID.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="59a3be20-8c73-4c67-838b-790e8297b5de" style="Column header" positionType="Float" x="79" y="580" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentLang.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="468c4caa-55b7-40f4-be0b-a03cb777e255" style="Detail" positionType="Float" x="215" y="580" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentLang.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="90a890da-2376-43d6-8cb9-407bf20da756" style="Column header" positionType="Float" x="79" y="600" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentName.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="2744a0b4-c70e-4e16-a557-764b2ea82566" style="Detail" positionType="Float" x="215" y="600" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentName.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="384dd0d8-d3a6-4a0c-831f-1abd30b88a4e" style="Column header" positionType="Float" x="79" y="620" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.maximum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c1ac2d27-7244-40f6-98f2-aaf43357b52d" style="Detail" positionType="Float" x="215" y="620" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.maximum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="53da2a32-066d-45d3-9ede-7487a02a7958" style="Column header" positionType="Float" x="79" y="640" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.minimum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="200d34a4-ec97-48f7-86ba-23846a8d79f8" style="Detail" positionType="Float" x="215" y="640" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.minimum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="cf03ce29-58fa-4e55-82e3-624a715fb336" style="Column header" positionType="Float" x="79" y="660" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="86dcfffe-63c1-4b78-b931-e242769c486f" style="Detail" positionType="Float" x="215" y="660" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentRole.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dfb690ee-c76a-4627-8e62-1b01ad797a46" style="Column header" positionType="Float" x="79" y="680" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.maximum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="39608eff-3c8e-4a37-a4fc-92ce210b34d9" style="Detail" positionType="Float" x="215" y="680" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.maximum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dd6ceda3-91eb-4cd5-93a2-2bc2271747cc" style="Column header" positionType="Float" x="79" y="700" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.minimum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="adb99992-58aa-47a1-8a47-37b5424d88ab" style="Detail" positionType="Float" x="215" y="700" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.minimum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2fd7d695-df46-4920-9194-7132a9fb63bb" style="Column header" positionType="Float" x="79" y="720" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b288b64d-51ea-420b-b0c4-17aeb91edf01" style="Detail" positionType="Float" x="215" y="720" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.componentType.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="781e2368-3a18-4713-a2d5-b5d9166bfa41" style="Column header" positionType="Float" x="79" y="740" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.endTime.format]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="840cb41b-825e-46f4-9ab1-4f43ff6d86ad" style="Detail" positionType="Float" x="215" y="740" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.endTime.format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4fa16066-f2c0-4a1b-8b7e-90b3bdd4d89e" style="Column header" positionType="Float" x="79" y="760" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.endTime.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d39c4980-673d-4a62-849c-c46191732c23" style="Detail" positionType="Float" x="215" y="760" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.endTime.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="bd47e820-3eb9-4b81-86ac-3e62ca886f92" style="Column header" positionType="Float" x="79" y="780" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.startTime.format]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ab1bffac-1cf8-40d9-b751-00e6f96c135b" style="Detail" positionType="Float" x="215" y="780" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.startTime.format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b8af21e9-3686-4fbf-95c1-9eaac5be5c1a" style="Column header" positionType="Float" x="79" y="800" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.startTime.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="a56d511c-a780-47a5-a57e-5f76b62525a7" style="Detail" positionType="Float" x="215" y="800" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.properties.startTime.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="18e70285-1040-47ec-92cd-8727dd39f31d" style="Column header" positionType="Float" x="79" y="820" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ce6c9c4b-e7ef-440d-b987-c128324f5130" style="Detail" positionType="Float" x="215" y="820" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="71064855-1926-40e0-81ed-e2a4cdc7e5ad" style="Column header" positionType="Float" x="79" y="840" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0f7709f7-5155-48d1-9fcf-a1530aa29d4c" style="Detail" positionType="Float" x="215" y="840" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.items.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6345c7fd-be32-4e4f-be0a-de6e21e40c79" style="Column header" positionType="Float" x="79" y="860" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.minItems]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="fb05c518-3a48-49f9-a94f-424ff2b53893" style="Detail" positionType="Float" x="215" y="860" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.minItems}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="db3adfa8-7f60-4aa8-86f0-16e928e3eccb" style="Column header" positionType="Float" x="79" y="880" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="22e59dec-f9f0-45e0-a60b-6b759c9c4463" style="Detail" positionType="Float" x="215" y="880" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.Component.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="110f1108-ff8b-4559-8abe-4c24098d81eb" style="Column header" positionType="Float" x="79" y="900" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.ContentID.properties.oneOf]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="780f91ec-ffc2-44e1-bc02-676235349cf6" style="Detail" positionType="Float" x="215" y="900" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.ContentID.properties.oneOf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dbff765d-563b-4bee-8831-6cc594664e3c" style="Column header" positionType="Float" x="79" y="920" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.ContentID.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="46607c56-3441-4146-8cf7-e9d2cc25305b" style="Detail" positionType="Float" x="215" y="920" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.ContentID.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="354ce185-f6eb-45c0-9e60-7a47cef52967" style="Column header" positionType="Float" x="79" y="940" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.maximum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3e95802f-0778-47f8-b71e-ae2b50873659" style="Detail" positionType="Float" x="215" y="940" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.maximum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2c8f74b6-d314-44fb-a59a-81e291d56d5d" style="Column header" positionType="Float" x="79" y="960" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.minimum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="5fe05334-a7ef-40d0-8be7-e8a8570bb165" style="Detail" positionType="Float" x="215" y="960" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.minimum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f31a2d3c-5afc-4c91-b7ef-d3e4b9e9f8b4" style="Column header" positionType="Float" x="79" y="980" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="bc4557e5-e42a-4448-80f6-73c7bf4fc10d" style="Detail" positionType="Float" x="215" y="980" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.DestinationDeviceType.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="09422d1a-8376-4e8c-80a7-3859093498ec" style="Column header" positionType="Float" x="79" y="1000" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.endTime.format]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="38d5932c-f32a-4dbd-b1db-bf5a7b19c4c2" style="Detail" positionType="Float" x="215" y="1000" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.endTime.format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="edb0d31b-86bb-4c2e-9e5c-32d2f055e702" style="Column header" positionType="Float" x="79" y="1020" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.endTime.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="50d0f4a4-e628-4cbb-868a-2fb0eb081703" style="Detail" positionType="Float" x="215" y="1020" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.endTime.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d8fee33f-1987-4196-b60a-c3bae19a73db" style="Column header" positionType="Float" x="79" y="1040" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.startTime.format]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d360457-09a9-4cb4-857f-11dd1184a680" style="Detail" positionType="Float" x="215" y="1040" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.startTime.format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c1f95265-3fb9-48cd-9371-2c34ebe85350" style="Column header" positionType="Float" x="79" y="1060" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.properties.startTime.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0a372028-0c6e-4a8c-a766-44d6e6afcc8f" style="Detail" positionType="Float" x="215" y="1060" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.properties.startTime.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="01769639-efda-4220-9e52-8691878ff552" style="Column header" positionType="Float" x="79" y="1080" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.items.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="84dfe47a-39b6-4b01-a210-5c4c108926a5" style="Detail" positionType="Float" x="215" y="1080" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.items.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0249ed6d-a672-45e3-8ac4-d7c9dda2db6b" style="Column header" positionType="Float" x="79" y="1100" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f5022d56-003f-440b-b22b-2f89b08188e1" style="Detail" positionType="Float" x="215" y="1100" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.AVService.items.properties.reportInterval.required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1a6590c4-f453-4411-a9f4-b3852e9f1f37" style="Column header" positionType="Float" x="79" y="1120" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.reportInterval.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="2110e482-e384-4323-8138-8586ef3d7278" style="Detail" positionType="Float" x="215" y="1120" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.reportInterval.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="01755ba6-3c41-41fc-953f-c2f300fb97ca" style="Column header" positionType="Float" x="79" y="1140" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.serviceId.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="aa18fae6-0aed-4f56-a2f6-d411c4134c59" style="Detail" positionType="Float" x="215" y="1140" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.serviceId.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="94a9d7e1-e54d-4c33-be74-392eda273072" style="Column header" positionType="Float" x="79" y="1160" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.properties.serviceType.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c9de121a-3281-4303-9fdc-5b8017af936a" style="Detail" positionType="Float" x="215" y="1160" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.properties.serviceType.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d50b78f6-4bf6-4e1f-9e15-50e46593296e" style="Column header" positionType="Float" x="79" y="1180" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c45bfdf5-78af-4600-b096-9ea540d301ea" style="Detail" positionType="Float" x="215" y="1180" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.AVService.items.required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="92933737-7cd4-443b-943a-bbc360273cc4" style="Column header" positionType="Float" x="79" y="1200" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.items.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="2f8514ef-715b-49e5-86e7-e2dccd74bca1" style="Detail" positionType="Float" x="215" y="1200" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.items.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="62a1ef77-a36b-47f9-a6d8-e3a099df1041" style="Column header" positionType="Float" x="79" y="1220" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.minItems]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="6d7e1c64-ba45-4329-a273-b42d78689678" style="Detail" positionType="Float" x="215" y="1220" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.minItems}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e6a3e811-6a17-421f-bf6b-e41d22e827a7" style="Column header" positionType="Float" x="79" y="1240" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.AVService.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="1f03ba68-f29b-4007-9887-9ee967b8cf2a" style="Detail" positionType="Float" x="215" y="1240" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.AVService.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="24473a3b-ce63-41c6-a870-8919d86fa0f2" style="Column header" positionType="Float" x="79" y="1260" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.deviceID.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="5b1754ab-f2be-4c53-9ee5-eeb61c841c15" style="Detail" positionType="Float" x="215" y="1260" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.properties.deviceID.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f78b713a-670a-4d5b-b768-bc55bda41960" style="Column header" positionType="Float" x="79" y="1280" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.deviceLocation.properties.latitude.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e26405c6-65a6-4c03-adaf-68cc6daa8ad5" style="Detail" positionType="Float" x="215" y="1280" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.properties.deviceLocation.properties.latitude.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="937a73c3-c6a9-4e71-b237-fcbb8759d1d3" style="Column header" positionType="Float" x="79" y="1300" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.deviceLocation.properties.longitude.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="5d97fc6a-fa04-447e-93eb-7c657cd16316" style="Detail" positionType="Float" x="215" y="1300" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.properties.deviceLocation.properties.longitude.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2214d72d-35ef-4404-80e7-0404803b6859" style="Column header" positionType="Float" x="79" y="1320" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.deviceLocation.required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="bf671d4d-c87f-4386-a024-d6404744ce67" style="Detail" positionType="Float" x="215" y="1320" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.DeviceInfo.items.properties.deviceLocation.required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7bc528b6-9495-483e-8713-416786155a61" style="Column header" positionType="Float" x="79" y="1340" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.deviceLocation.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="cdd1e356-b431-4a29-a24f-d930f7440bb9" style="Detail" positionType="Float" x="215" y="1340" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.properties.deviceLocation.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9f4c3678-cd22-46cc-a420-652f71b8ad61" style="Column header" positionType="Float" x="79" y="1360" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.deviceManufacturer.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8353c85e-916f-4743-b75c-fb63a905a0b1" style="Detail" positionType="Float" x="215" y="1360" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.properties.deviceManufacturer.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4796cb64-77b1-40ca-8678-7356b591a69b" style="Column header" positionType="Float" x="79" y="1380" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.deviceModel.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8912e805-7fdf-4588-8aea-ca2c01f5affc" style="Detail" positionType="Float" x="215" y="1380" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.properties.deviceModel.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e789a32d-72aa-4567-b546-b1c60abf2fcc" style="Column header" positionType="Float" x="79" y="1400" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.deviceOS.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7465241d-54e1-4264-bf2d-044c00f5e17f" style="Detail" positionType="Float" x="215" y="1400" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.properties.deviceOS.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="57e8cbef-f227-432c-8963-a4560102b052" style="Column header" positionType="Float" x="79" y="1420" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.peripheralDevice.enum]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="84a39fa4-74a0-403e-82cb-e2621a3fbdfb" style="Detail" positionType="Float" x="215" y="1420" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.DeviceInfo.items.properties.peripheralDevice.enum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="cad23e60-c3a0-4759-8c1e-7e7082a33910" style="Column header" positionType="Float" x="79" y="1440" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.properties.peripheralDevice.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="48f33a22-531a-484e-99ac-403639d802e1" style="Detail" positionType="Float" x="215" y="1440" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.properties.peripheralDevice.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="bcf22289-db97-47b5-989f-fe4846c26378" style="Column header" positionType="Float" x="79" y="1460" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="20b22716-be8d-4aa5-92a6-315fe8caca70" style="Detail" positionType="Float" x="215" y="1460" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.properties.DeviceInfo.items.required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3ce3a61b-d233-4ef8-ac1f-23283ce08730" style="Column header" positionType="Float" x="79" y="1480" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.items.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0d464a81-7aa0-4a04-911b-b39a5ea920f6" style="Detail" positionType="Float" x="215" y="1480" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.items.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4ec99848-ea4d-468f-ac75-ee551bee2f75" style="Column header" positionType="Float" x="79" y="1500" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.maxItems]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3b9c775b-d771-4877-b8ad-9644051a76e5" style="Detail" positionType="Float" x="215" y="1500" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.maxItems}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d698844b-e0e6-4667-9eba-ca9efa9736b3" style="Column header" positionType="Float" x="79" y="1520" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.minItems]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="151d004f-2dc3-48ca-9e35-0e8640dc0e33" style="Detail" positionType="Float" x="215" y="1520" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.minItems}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9b4bd58c-3004-48eb-9544-939709a9ce4d" style="Column header" positionType="Float" x="79" y="1540" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.DeviceInfo.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c14d1367-b5f2-4ce4-b7d3-68ca24a091c0" style="Detail" positionType="Float" x="215" y="1540" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.DeviceInfo.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5b2a437f-8695-4540-aebb-d734035177da" style="Column header" positionType="Float" x="79" y="1560" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.protocolVersion.maxLength]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="30ca4483-3e59-4e6d-a4dd-e905c5ca02a0" style="Detail" positionType="Float" x="215" y="1560" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.protocolVersion.maxLength}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1b0504dd-6778-4e8a-926a-229ad667bd82" style="Column header" positionType="Float" x="79" y="1580" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.protocolVersion.minLength]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ed876e61-8956-49d9-ad00-3ab0ca403752" style="Detail" positionType="Float" x="215" y="1580" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.protocolVersion.minLength}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="30eabe8c-eb7b-4023-bd89-a523d948c00e" style="Column header" positionType="Float" x="79" y="1600" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.protocolVersion.pattern]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ee59683c-978d-4421-ad5b-2bead1669533" style="Detail" positionType="Float" x="215" y="1600" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.protocolVersion.pattern}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="42dfc73c-128a-4abe-bd68-86969e5c21c5" style="Column header" positionType="Float" x="79" y="1620" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.properties.protocolVersion.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="782018be-f1fb-4fde-9149-dfc7fa7c6024" style="Detail" positionType="Float" x="215" y="1620" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.properties.protocolVersion.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="487b6a66-a966-4522-a61a-7c7d814609df" style="Column header" positionType="Float" x="79" y="1640" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="cc0a8999-323e-45c1-a57c-e4938d2b4df2" style="Detail" positionType="Float" x="215" y="1640" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CDM.required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1abff721-adc8-46a6-bf24-9425d55a7e14" style="Column header" positionType="Float" x="79" y="1660" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CDM.type]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="05189d2e-b057-495a-8c98-900a5e4260f9" style="Detail" positionType="Float" x="215" y="1660" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CDM.type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6d53f228-4a1d-4474-8e9c-23dacf8e0401" style="Column header" positionType="Float" x="79" y="1680" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[_id]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="1e6e77c2-ab95-41d7-bd90-2c27f823d451" style="Detail" positionType="Float" x="215" y="1680" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="06c4e0fd-30d8-4080-a46b-66eb71c44046" style="Column header" positionType="Float" x="79" y="1700" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[description]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f7e76174-55d1-4d76-afe6-bddd4383e870" style="Detail" positionType="Float" x="215" y="1700" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="94f5241f-e397-49a9-b170-07f4d787d943" style="Column header" positionType="Float" x="79" y="1720" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e5f89a33-7ae2-4750-8589-623df362e287" style="Detail" positionType="Float" x="215" y="1720" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="33a725f3-c407-4d32-88cc-00a2af9e2cb0" style="Column header" positionType="Float" x="79" y="1740" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[required]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="81eaa7ed-aaaa-432c-b865-7df4eade3334" style="Detail" positionType="Float" x="215" y="1740" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{required}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="cc6b78fc-f526-47c4-a3ec-3dab45873bae" style="Column header" positionType="Float" x="79" y="1760" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[schema]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b9e1a981-e81e-42f9-9fd7-a1e2d63c72ae" style="Detail" positionType="Float" x="215" y="1760" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{schema}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="53ffc965-e619-4c58-9c74-949a0be99da0" style="Column header" positionType="Float" x="79" y="1780" width="132" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[title]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="1447bdcd-bc22-4026-8e98-8642e63b0299" style="Detail" positionType="Float" x="215" y="1780" width="338" height="18"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement uuid="6de8cdb8-2867-404b-93b6-534c05db155f" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement uuid="5a779b77-efdf-4988-afa7-2918d0098726" mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#9DB1B8"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="0abea52a-af2e-4b90-9c5e-acc28a54024d" style="Column header" x="513" y="-1" width="40" height="13" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="3dd21a16-cbe2-419c-bb2e-997ce7c164c7" style="Column header" x="433" y="-1" width="80" height="13" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="034fefa8-6a21-4d16-9cb8-a5e85bb646d0" style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

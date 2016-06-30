@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MongoDbGeospatial" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="detail_default">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E0D0E0"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="All">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers' }]]>
+		</queryString>
+		<field name="_id" class="org.bson.types.ObjectId"/>
+		<field name="account_type" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="addresses.billing_address.country" class="java.lang.String"/>
+		<field name="addresses.billing_address.location.0" class="java.lang.Double"/>
+		<field name="addresses.billing_address.location.1" class="java.lang.Double"/>
+		<field name="addresses.billing_address.postalcode" class="java.lang.String"/>
+		<field name="addresses.billing_address.state" class="java.lang.String"/>
+		<field name="addresses.billing_address.street" class="java.lang.String"/>
+		<field name="addresses.shipping_address.city" class="java.lang.String"/>
+		<field name="addresses.shipping_address.country" class="java.lang.String"/>
+		<field name="addresses.shipping_address.location.0" class="java.lang.Double"/>
+		<field name="addresses.shipping_address.location.1" class="java.lang.Double"/>
+		<field name="addresses.shipping_address.postalcode" class="java.lang.String"/>
+		<field name="addresses.shipping_address.state" class="java.lang.String"/>
+		<field name="addresses.shipping_address.street" class="java.lang.String"/>
+		<field name="assigned_user_id" class="java.lang.String"/>
+		<field name="created_by" class="java.lang.String"/>
+		<field name="datatype_test" class="org.bson.types.BSONTimestamp"/>
+		<field name="date_entered" class="java.util.Date"/>
+		<field name="date_modified" class="java.util.Date"/>
+		<field name="deleted" class="java.lang.Boolean"/>
+		<field name="emp_count" class="java.lang.Double"/>
+		<field name="id" class="java.lang.String"/>
+		<field name="industry" class="java.lang.String"/>
+		<field name="modified_user_id" class="java.lang.String"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="phone_office" class="java.lang.String"/>
+		<field name="products.0" class="java.lang.String"/>
+		<field name="products.1" class="java.lang.String"/>
+		<field name="products.2" class="java.lang.String"/>
+		<field name="revenue_2011" class="java.lang.Double"/>
+		<field name="website" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Near">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'addresses.billing_address.location' : { '$near' : [-117.15,32.72] } },
+'limit' : 1
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.location" class="java.util.List"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Within10Miles">
+		<parameter name="MilesInDegrees" class="java.lang.Double">
+			<defaultValueExpression><![CDATA[new Double(10.0/69.0)
+/* approximately 10 miles in degrees */]]></defaultValueExpression>
+		</parameter>
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' :
+	{ 'addresses.billing_address.location' :
+		{ '$within' : { '$center' : [[-117.15,32.72],$P{MilesInDegrees}] } }
+	}
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.location" class="java.util.List"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="addresses.billing_address.location.0" class="java.lang.Double"/>
+	</subDataset>
+	<queryString language="MongoDbQuery">
+		<![CDATA[{ 'collectionName' : 'customers' }]]>
+	</queryString>
+	<field name="_id" class="org.bson.types.ObjectId"/>
+	<field name="account_type" class="java.lang.String"/>
+	<field name="addresses.billing_address.city" class="java.lang.String"/>
+	<field name="addresses.billing_address.country" class="java.lang.String"/>
+	<field name="addresses.billing_address.location.0" class="java.lang.Double"/>
+	<field name="addresses.billing_address.location.1" class="java.lang.Double"/>
+	<field name="addresses.billing_address.postalcode" class="java.lang.String"/>
+	<field name="addresses.billing_address.state" class="java.lang.String"/>
+	<field name="addresses.billing_address.street" class="java.lang.String"/>
+	<field name="addresses.shipping_address.city" class="java.lang.String"/>
+	<field name="addresses.shipping_address.country" class="java.lang.String"/>
+	<field name="addresses.shipping_address.location.0" class="java.lang.Double"/>
+	<field name="addresses.shipping_address.location.1" class="java.lang.Double"/>
+	<field name="addresses.shipping_address.postalcode" class="java.lang.String"/>
+	<field name="addresses.shipping_address.state" class="java.lang.String"/>
+	<field name="addresses.shipping_address.street" class="java.lang.String"/>
+	<field name="assigned_user_id" class="java.lang.String"/>
+	<field name="created_by" class="java.lang.String"/>
+	<field name="date_entered" class="java.util.Date"/>
+	<field name="date_modified" class="java.util.Date"/>
+	<field name="deleted" class="java.lang.Boolean"/>
+	<field name="emp_count" class="java.lang.Double"/>
+	<field name="id" class="java.lang.String"/>
+	<field name="industry" class="java.lang.String"/>
+	<field name="modified_user_id" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="phone_office" class="java.lang.String"/>
+	<field name="products.0" class="java.lang.String"/>
+	<field name="products.1" class="java.lang.String"/>
+	<field name="revenue_2011" class="java.lang.Double"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="products" class="java.util.Collection"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="455" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="372" height="86"/>
+				<textElement markup="html">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sample queries for MongoDB<br />"
++ "Based on <a href=\"http://www.mongodb.org/display/DOCS/Geospatial+Indexing\">Geospatial Indexing</a> documentation<br />"
++ "The main report query returns all records<br />"
++ "The subdatasets show the use of geospatial queries"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement key="table3" positionType="Float" x="0" y="86" width="572" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Near">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="572">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="572" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Find the customer nearest to San Diego (-117.15,32.72):\n"
++ "{ 'addresses.billing_address.location' : { '\u0024near' : [-117.15,32.72] } }"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:tableFooter height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="572" height="30"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA[" " /* place holder just to have a nice bottom border */]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:column width="252">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="252" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="120">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="120" height="30"/>
+									<box rightPadding="0">
+										<rightPen lineWidth="0.0"/>
+									</box>
+									<textElement>
+										<paragraph tabStopWidth="25"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{addresses.billing_address.city}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="200">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="200" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[""+$F{addresses.billing_address.location}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table3" positionType="Float" x="0" y="136" width="572" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Within10Miles">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="572">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="572" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Find the customers with 10 miles (0.15 degrees) of San Diego (-117.15,32.72):\n"
++ "{ 'addresses.billing_address.location' : { '\u0024within' : { '\u0024center' : [[-117.15,32.72],0.15] } } }"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:tableFooter height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="572" height="30"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA[" " /* place holder just to have a nice bottom border */]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:column width="252">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="252" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="120">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="120" height="30"/>
+									<box rightPadding="0">
+										<rightPen lineWidth="0.0"/>
+									</box>
+									<textElement>
+										<paragraph tabStopWidth="25"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{addresses.billing_address.city}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="200">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="200" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[""+$F{addresses.billing_address.location}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement positionType="Float" x="0" y="225" width="572" height="208"/>
+				<mp:map xmlns:mp="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" evaluationTime="Report">
+					<mp:latitudeExpression><![CDATA[$F{addresses.billing_address.location.1}.floatValue()]]></mp:latitudeExpression>
+					<mp:longitudeExpression><![CDATA[$F{addresses.billing_address.location.0}.floatValue()]]></mp:longitudeExpression>
+				</mp:map>
+			</componentElement>
+			<textField>
+				<reportElement positionType="Float" x="0" y="186" width="572" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GoogleMap centered on the first record returned"
++ " (Lat: " + $F{addresses.billing_address.location.1}.floatValue()
++ ", Lon: " + $F{addresses.billing_address.location.0}.floatValue() + ")"]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement x="372" y="0" width="200" height="48"/>
+				<imageExpression><![CDATA["repo:/images/js_samples.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="120" splitType="Stretch">
+			<textField>
+				<reportElement style="detail_default" x="0" y="40" width="249" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="20" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{account_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="249" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="384" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.country}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="444" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.location.0}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="504" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.location.1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="324" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.postalcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="309" y="0" width="15" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="149" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="249" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="384" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.country}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="444" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.location.0}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="504" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.location.1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="324" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.postalcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="309" y="20" width="15" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="149" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="434" y="60" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{assigned_user_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="299" y="60" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{created_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="464" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{date_entered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="464" y="60" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{date_modified}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="349" y="60" width="85" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{deleted}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="detail_default" x="249" y="40" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{emp_count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="60" width="249" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="349" y="40" width="85" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{industry}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="434" y="40" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{modified_user_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="0" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="299" y="40" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{phone_office}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="detail_default" x="249" y="60" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{revenue_2011}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="80" width="249" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{website}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="249" y="80" width="315" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{products.0}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="100" width="564" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{products}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

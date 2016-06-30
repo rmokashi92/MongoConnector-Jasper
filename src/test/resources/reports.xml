@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperPrint xmlns="http://jasperreports.sourceforge.net/jasperreports/print" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/print http://jasperreports.sourceforge.net/xsd/jasperprint.xsd" name="dynamictester" pageWidth="595" pageHeight="842" topMargin="50" leftMargin="40" bottomMargin="50" rightMargin="40" locale="en_US" timezone="America/New_York">
+	<property name="net.sf.jasperreports.export.xml.start.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.end.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.page.count" value="1"/>
+	<property name="net.sf.jasperreports.export.pdf.tagged" value="true"/>
+	<property name="net.sf.jasperreports.export.pdf.tag.language" value="EN-US"/>
+	<origin group="CityGroup" band="groupHeader"/>
+	<origin group="CityGroup" band="groupFooter"/>
+	<origin band="title"/>
+	<origin band="pageHeader"/>
+	<origin band="detail"/>
+	<origin band="pageFooter"/>
+	<origin band="summary"/>
+	<style name="Sans_Normal" isDefault="true" fontName="SansSerif" fontSize="12" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="Sans_Bold" fontName="SansSerif" fontSize="12" isBold="true" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="Sans_Italic" fontName="SansSerif" fontSize="12" isItalic="true" pdfFontName="Helvetica-Oblique" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="PageHeader" style="Sans_Bold" forecolor="#FFFFFF"/>
+	<style name="detail"/>
+	<page>
+		<text textAlignment="Center" textHeight="27.671875" lineSpacingFactor="1.2578125" leadingOffset="-5.553711">
+			<reportElement style="Sans_Normal" x="40" y="85" width="515" height="30" origin="2" srcId="3"/>
+			<font size="22"/>
+			<textContent><![CDATA[Accounts]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="27.671875" lineSpacingFactor="1.2578125" leadingOffset="-5.553711">
+			<reportElement x="40" y="50" width="515" height="35" origin="2" srcId="4"/>
+			<font size="22"/>
+			<textContent><![CDATA[Data retrieved directly from MongoDB]]></textContent>
+		</text>
+		<frame>
+			<reportElement mode="Opaque" x="40" y="129" width="515" height="16" backcolor="#333333" origin="3" srcId="5">
+				<property name="net.sf.jasperreports.export.pdf.tag.table" value="start"/>
+				<property name="net.sf.jasperreports.export.pdf.tag.tr" value="full"/>
+			</reportElement>
+			<text textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969">
+				<reportElement style="PageHeader" x="30" y="0" width="240" height="16" origin="3" srcId="6">
+					<property name="net.sf.jasperreports.export.pdf.tag.th" value="full"/>
+					<property name="net.sf.jasperreports.export.pdf.tag.colspan" value="2"/>
+				</reportElement>
+				<textContent><![CDATA[@context.CDM]]></textContent>
+			</text>
+			<text textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969">
+				<reportElement style="PageHeader" x="280" y="0" width="80" height="16" origin="3" srcId="7">
+					<property name="net.sf.jasperreports.export.pdf.tag.th" value="full"/>
+				</reportElement>
+				<textContent><![CDATA[id]]></textContent>
+			</text>
+			<text textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969">
+				<reportElement style="PageHeader" x="370" y="0" width="145" height="16" origin="3" srcId="8">
+					<property name="net.sf.jasperreports.export.pdf.tag.th" value="full"/>
+				</reportElement>
+				<textContent><![CDATA[required]]></textContent>
+			</text>
+		</frame>
+		<frame>
+			<reportElement mode="Opaque" x="40" y="159" width="515" height="16" backcolor="#C0C0C0" origin="0" srcId="1">
+				<property name="net.sf.jasperreports.export.pdf.tag.tr" value="full"/>
+				<property name="net.sf.jasperreports.export.pdf.tag.td" value="full"/>
+				<property name="net.sf.jasperreports.export.pdf.tag.colspan" value="4"/>
+			</reportElement>
+			<box>
+				<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+			</box>
+			<text textAlignment="Left" textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969">
+				<reportElement style="Sans_Bold" x="0" y="0" width="515" height="16" origin="0" srcId="2"/>
+				<textContent><![CDATA[GroupField]]></textContent>
+			</text>
+		</frame>
+		<frame>
+			<reportElement style="detail" x="40" y="175" width="515" height="79" origin="4" srcId="9">
+				<property name="net.sf.jasperreports.export.pdf.tag.tr" value="full"/>
+			</reportElement>
+			<box>
+				<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#808080"/>
+			</box>
+			<text textAlignment="Right" textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969">
+				<reportElement x="0" y="4" width="20" height="16" origin="4" srcId="10">
+					<property name="net.sf.jasperreports.export.pdf.tag.td" value="full"/>
+				</reportElement>
+				<textContent><![CDATA[1.]]></textContent>
+			</text>
+			<text textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969">
+				<reportElement x="30" y="4" width="235" height="16" origin="4" srcId="11">
+					<property name="net.sf.jasperreports.export.pdf.tag.td" value="full"/>
+				</reportElement>
+				<textContent><![CDATA[http://www.atsc.org/contexts/3.0/CDM/V1]]></textContent>
+			</text>
+			<text textHeight="75.46875" lineSpacingFactor="1.2578125" leadingOffset="-2.6367188">
+				<reportElement x="270" y="4" width="95" height="75" origin="4" srcId="12">
+					<property name="net.sf.jasperreports.export.pdf.tag.td" value="full"/>
+				</reportElement>
+				<textContent><![CDATA[http://atsc.org/version/3.0/serviceusagereporting/usagereport#]]></textContent>
+			</text>
+			<text textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969" valueClass="com.mongodb.BasicDBList">
+				<reportElement x="370" y="4" width="145" height="16" origin="4" srcId="13">
+					<property name="net.sf.jasperreports.export.pdf.tag.td" value="full"/>
+				</reportElement>
+				<textContent><![CDATA[[ "CDM"]]]></textContent>
+			</text>
+		</frame>
+		<line>
+			<reportElement x="40" y="762" width="515" height="1" origin="5" srcId="14">
+				<property name="net.sf.jasperreports.export.pdf.tag.table" value="end"/>
+			</reportElement>
+		</line>
+		<text textAlignment="Right" textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969">
+			<reportElement x="240" y="772" width="80" height="16" origin="5" srcId="15"/>
+			<textContent><![CDATA[Page 1 of]]></textContent>
+		</text>
+		<text textAlignment="Left" textHeight="15.09375" lineSpacingFactor="1.2578125" leadingOffset="-3.0292969">
+			<reportElement x="320" y="772" width="75" height="16" origin="5" srcId="16"/>
+			<textContent><![CDATA[ 1]]></textContent>
+		</text>
+	</page>
+</jasperPrint>

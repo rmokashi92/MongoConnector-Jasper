@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MongoDbConditionalOperators" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="detail_default">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E0D0E0"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="LessThan">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'emp_count' : {'$lt' : 500} }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+	</subDataset>
+	<subDataset name="GreaterThanOrEqual">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'emp_count' : {'$gte' : 500} }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+	</subDataset>
+	<subDataset name="All">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'products' : { '$all' : [ "JasperReports Server Enterprise", "Jaspersoft Consulting" ] } }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="products" class="java.util.Collection"/>
+	</subDataset>
+	<subDataset name="Mod">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'emp_count' : { '$mod' : [ 3, 0 ] } }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+	</subDataset>
+	<subDataset name="NotEqual">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'addresses.billing_address.country' : {'$ne' : 'USA'} }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="addresses.billing_address.country" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+	</subDataset>
+	<subDataset name="In_Simple">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'industry' : {'$in' : ['Communications','Engineering']} }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="addresses.billing_address.country" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+		<field name="industry" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="In_Array">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'products' : {'$in' : ['Self-Service Express','JRS Ultimate Guide']} }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="addresses.billing_address.country" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+		<field name="industry" class="java.lang.String"/>
+		<field name="products" class="java.util.Collection"/>
+	</subDataset>
+	<subDataset name="Nin">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'assigned_user_id' : {'$nin' : ['kiana_id','oliver_id','beth_id']} }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="addresses.billing_address.country" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+		<field name="industry" class="java.lang.String"/>
+		<field name="assigned_user_id" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Nor">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { '$nor' :
+	[
+		{'emp_count' : {'$lt' : 500}} ,
+		{'addresses.billing_address.state' : 'CA'}
+	] }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+		<field name="addresses.billing_address.state" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Or">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { '$or' :
+	[
+		{'emp_count' : {'$lt' : 500}} ,
+		{'addresses.billing_address.state' : 'CA'}
+	] }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+		<field name="addresses.billing_address.state" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Size">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'products' : {'$size' : 3} }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="addresses.billing_address.city" class="java.lang.String"/>
+		<field name="addresses.billing_address.country" class="java.lang.String"/>
+		<field name="emp_count" class="java.lang.Double"/>
+		<field name="industry" class="java.lang.String"/>
+		<field name="products" class="java.util.Collection"/>
+	</subDataset>
+	<subDataset name="Type">
+		<queryString language="MongoDbQuery">
+			<![CDATA[{ 'collectionName' : 'customers',
+'findQuery' : { 'datatype_test' : {'$type' : 9} }
+}]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="datatype_test" class="java.lang.Object"/>
+	</subDataset>
+	<queryString language="MongoDbQuery">
+		<![CDATA[{ 'collectionName' : 'customers' }]]>
+	</queryString>
+	<field name="_id" class="org.bson.types.ObjectId"/>
+	<field name="account_type" class="java.lang.String"/>
+	<field name="addresses.billing_address.city" class="java.lang.String"/>
+	<field name="addresses.billing_address.country" class="java.lang.String"/>
+	<field name="addresses.billing_address.location.0" class="java.lang.Double"/>
+	<field name="addresses.billing_address.location.1" class="java.lang.Double"/>
+	<field name="addresses.billing_address.postalcode" class="java.lang.String"/>
+	<field name="addresses.billing_address.state" class="java.lang.String"/>
+	<field name="addresses.billing_address.street" class="java.lang.String"/>
+	<field name="addresses.shipping_address.city" class="java.lang.String"/>
+	<field name="addresses.shipping_address.country" class="java.lang.String"/>
+	<field name="addresses.shipping_address.location.0" class="java.lang.Double"/>
+	<field name="addresses.shipping_address.location.1" class="java.lang.Double"/>
+	<field name="addresses.shipping_address.postalcode" class="java.lang.String"/>
+	<field name="addresses.shipping_address.state" class="java.lang.String"/>
+	<field name="addresses.shipping_address.street" class="java.lang.String"/>
+	<field name="assigned_user_id" class="java.lang.String"/>
+	<field name="created_by" class="java.lang.String"/>
+	<field name="date_entered" class="java.util.Date"/>
+	<field name="date_modified" class="java.util.Date"/>
+	<field name="deleted" class="java.lang.Boolean"/>
+	<field name="emp_count" class="java.lang.Double"/>
+	<field name="id" class="java.lang.String"/>
+	<field name="industry" class="java.lang.String"/>
+	<field name="modified_user_id" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="phone_office" class="java.lang.String"/>
+	<field name="products.0" class="java.lang.String"/>
+	<field name="products.1" class="java.lang.String"/>
+	<field name="revenue_2011" class="java.lang.Double"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="products" class="java.util.Collection"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="319" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="372" height="79"/>
+				<textElement markup="html">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sample queries for MongoDB<br />"
++ "Based on the <a href=\"http://www.mongodb.org/display/DOCS/Advanced+Queries\">Advanced Queries</a> documentation<br />"
++ "The main report query returns all records<br />"
++ "The subdatasets show the Conditional Operators"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement key="table1" x="0" y="79" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="LessThan">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Less than (\u0024lt) 500 employees:"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{addresses.billing_address.city}
++ " (" + $F{emp_count}.intValue() + ")"]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table2" x="286" y="79" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="GreaterThanOrEqual">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Greater than or equal to (\u0024gte) 500 employees:"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{addresses.billing_address.city}
++ " (" + $F{emp_count}.intValue() + ")"]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table3" positionType="Float" x="0" y="119" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="All">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["All (\u0024all) of these products:\n"
++ "[\"JasperReports Server Enterprise\",\"Jaspersoft Consulting\"]"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{products}.toString()]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table4" positionType="Float" x="286" y="119" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Mod">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Number of employees is a multiple of 3 (\u0024mod):"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{emp_count}.intValue()
++ " / 3 = "
++ ($F{emp_count}.intValue() / 3)]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table5" positionType="Float" x="0" y="159" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="NotEqual">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Country not equal to (\u0024ne) USA"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{addresses.billing_address.city}
++ ", " + $F{addresses.billing_address.country}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table6" positionType="Float" x="286" y="159" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="In_Simple">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Industry in (\u0024in) ['Communications','Engineering']"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{industry}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table7" positionType="Float" x="0" y="199" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Nin">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Assigned userid not in (\u0024nin)\n['kiana_id','oliver_id','beth_id']"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{assigned_user_id}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table8" positionType="Float" x="286" y="199" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="In_Array">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Product in (\u0024in)\n['Self-Service Express','JRS Ultimate Guide']"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{products}.toString()]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table9" positionType="Float" x="0" y="239" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Nor">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Employee count is not less than 500\n"
++ "nor (\u0024nor) is the state CA"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{addresses.billing_address.state}
++ " (" + $F{emp_count}.intValue() + " )"]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table10" positionType="Float" x="0" y="279" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Or">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Employee count is less than 500\n"
++ "or (\u0024or) the state is CA"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2" rightPadding="2">
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="0.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2" rightPadding="2">
+										<bottomPen lineWidth="0.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{addresses.billing_address.state}
++ " (" + $F{emp_count}.intValue() + " )"]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table11" positionType="Float" x="286" y="239" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Size">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Customer has exactly 3 products (\u0024size = 3)"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="0.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<bottomPen lineWidth="0.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{products}.size() + " products: " + $F{products}.toString()]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table11" positionType="Float" x="286" y="279" width="286" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Type">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="286">
+						<jr:tableHeader height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="286" height="30"/>
+								<box topPadding="2" leftPadding="2" rightPadding="2">
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement/>
+								<textFieldExpression><![CDATA["Field datatype_test has type\n(\u0024type) Date (BSON type number 9)"]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField>
+									<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="30"/>
+									<box leftPadding="2">
+										<leftPen lineWidth="1.0"/>
+										<bottomPen lineWidth="0.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="143">
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="143" height="30"/>
+									<box rightPadding="2">
+										<bottomPen lineWidth="0.0"/>
+										<rightPen lineWidth="1.0"/>
+									</box>
+									<textElement/>
+									<textFieldExpression><![CDATA[$F{datatype_test}.toString()]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<image onErrorType="Blank">
+				<reportElement x="372" y="0" width="200" height="48"/>
+				<imageExpression><![CDATA["repo:/images/js_samples.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="120" splitType="Stretch">
+			<textField>
+				<reportElement style="detail_default" x="0" y="40" width="249" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="20" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{account_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="249" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="384" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.country}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="444" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.location.0}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="504" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.location.1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="324" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.postalcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="309" y="0" width="15" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="149" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.billing_address.street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="249" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="384" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.country}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="444" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.location.0}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="504" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.location.1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="324" y="20" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.postalcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="309" y="20" width="15" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="149" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresses.shipping_address.street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="434" y="60" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{assigned_user_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="299" y="60" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{created_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="464" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{date_entered}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="464" y="60" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{date_modified}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="349" y="60" width="85" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{deleted}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="detail_default" x="249" y="40" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{emp_count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="60" width="249" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="349" y="40" width="85" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{industry}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="434" y="40" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{modified_user_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="0" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="299" y="40" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{phone_office}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="detail_default" x="249" y="60" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{revenue_2011}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="80" width="249" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{website}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="249" y="80" width="315" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{products.0}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail_default" x="0" y="100" width="564" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{products}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
